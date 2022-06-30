@@ -6,7 +6,8 @@
 /config/secrets/prod/prod.decrypt.private.php
 /config/packages/debug.yaml
 /config/packages/web_profiler.yaml
-/public/bundles/
+/config/routes/web_profiler.yaml
+
 /var/
 /vendor/
 
