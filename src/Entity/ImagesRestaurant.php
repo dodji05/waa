@@ -39,7 +39,7 @@ class ImagesRestaurant
 
     public function getUrl(): ?string
     {
-        return  'http://'.$_SERVER['SERVER_NAME'].'/uploads/'.$this->url;
+        return  'https://'.$_SERVER['SERVER_NAME'].'/uploads/'.$this->url;
        // return $this->url;
     }
 
