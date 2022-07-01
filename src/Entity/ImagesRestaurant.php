@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ImagesRestaurantRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: ImagesRestaurantRepository::class)]
@@ -19,6 +20,7 @@ class ImagesRestaurant
     private $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["resto:read"])]
     private $url;
 
     /**
@@ -37,7 +39,8 @@ class ImagesRestaurant
 
     public function getUrl(): ?string
     {
-        return $this->url;
+        return  'http://'.$_SERVER['SERVER_NAME'].'/uploads/'.$this->url;
+       // return $this->url;
     }
 
     public function setUrl(?string $url): self

@@ -7,9 +7,13 @@ use App\Repository\RestaurantsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: RestaurantsRepository::class)]
-#[ApiResource]
+#[ApiResource (
+ normalizationContext: ['groups' => ['resto:read']]
+)
+]
 class Restaurants
 {
     #[ORM\Id]
@@ -18,24 +22,31 @@ class Restaurants
     private $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["resto:read"])]
     private $nom;
 
     #[ORM\Column(type: 'text', nullable: true)]
+    #[Groups(["resto:read"])]
     private $description;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["resto:read"])]
     private $adresse;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(["resto:read"])]
     private $latitude;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(["resto:read"])]
     private $longitude;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["resto:read"])]
     private $chef;
 
     #[ORM\OneToMany(mappedBy: 'restaurants', targetEntity: ImagesRestaurant::class)]
+    #[Groups(["resto:read"])]
     private $images;
 
     #[ORM\OneToMany(mappedBy: 'restaurants', targetEntity: Menu::class)]
