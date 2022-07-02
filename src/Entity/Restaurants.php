@@ -61,7 +61,7 @@ class Restaurants
     #[ORM\OneToMany(mappedBy: 'restaurants', targetEntity: Table::class)]
     private $tables;
 
-    private $note;
+    private int|float $note;
 
     public function __construct()
     {
