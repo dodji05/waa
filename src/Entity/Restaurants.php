@@ -61,6 +61,8 @@ class Restaurants
     #[ORM\OneToMany(mappedBy: 'restaurants', targetEntity: Table::class)]
     private $tables;
 
+    private $note;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
