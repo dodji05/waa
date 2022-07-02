@@ -269,7 +269,7 @@ class Restaurants
      * @return float
      */
     #[Groups(["resto:read"])]
-    public function getAvgRatings()
+    public function getNote()
     {
         // Calculer la somme des notations
         $sum = array_reduce($this->avis->toArray(), function ($total, $comment) {
