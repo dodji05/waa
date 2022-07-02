@@ -262,4 +262,22 @@ class Restaurants
 
         return $this;
     }
+
+    /**
+     * Permet d'obtenir la moyenne globale des notes pour cette annonce
+     *
+     * @return float
+     */
+    #[Groups(["resto:read"])]
+    public function getAvgRatings()
+    {
+        // Calculer la somme des notations
+        $sum = array_reduce($this->avis->toArray(), function ($total, $comment) {
+            return $total + $comment->getNote();
+        }, 0);
+        // Faire la division avec le nombre de notes
+        if (count($this->avis) > 0) return $sum / count($this->avis);
+
+        return 0;
+    }
 }
