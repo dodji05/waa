@@ -16,7 +16,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
  normalizationContext: ['groups' => ['resto:read']]
 )
 ]
-#[ApiFilter(OrderFilter::class, properties: ['nom' => 'ASC', 'note' => 'DESC'])]
+#[ApiFilter(OrderFilter::class, properties: ['note' => 'DESC'])]
 class Restaurants
 {
     #[ORM\Id]
